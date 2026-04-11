@@ -1,0 +1,5 @@
+numpy
+flask
+tensorflow == 2.19.0
+pillow
+keras == 3.13.2
