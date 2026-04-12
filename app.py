@@ -66,6 +66,9 @@ def predict():
         # PNGとして保存
         name = f"./picture/image_{current_count}.png"
         img.save(name, "PNG")
+
+        # Update count
+        save_count(current_count)
         
         print("PNG形式で保存しました。")
         
