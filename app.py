@@ -1,7 +1,7 @@
 import os
 import io
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import tensorflow as tf
 import numpy as np
 from PIL import Image
@@ -89,6 +89,10 @@ def returnPNG():
     return {
         "image_data": base64_string
     }
+
+@app.route("/images/<filename>")
+def get_image(filename):
+    return send_from_directory("picture", filename)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=False)
