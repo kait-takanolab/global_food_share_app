@@ -67,7 +67,10 @@ def predict():
         name = f"./picture/image_{current_count}.png"
         img.save(name, "PNG")
 
+<<<<<<< HEAD
+=======
         # Update count
+>>>>>>> 481a3174ed558dbbf5b35b4759630d4f8a0555e6
         save_count(current_count)
         
         print("PNG形式で保存しました。")
@@ -93,9 +96,11 @@ def returnPNG():
         "image_data": base64_string
     }
 
-@app.route("/images/<filename>")
+@app.route("/images/<path:filename>")
 def get_image(filename):
-    return send_from_directory("picture", filename)
+    clean_filename = os.path.basename(filename)
+    print(f"画像を送りました！,{clean_filename}")
+    return send_from_directory("picture", clean_filename)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=False)
